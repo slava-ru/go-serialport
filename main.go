@@ -3,7 +3,7 @@ package main
 import (
     "fmt"
     "github.com/tarm/goserial"
-    "time"
+    //"time"
 )
 
 func main() {
@@ -14,13 +14,13 @@ func main() {
             fmt.Println(err)
     }
 
-    _, err = s.Write([]byte("\x16\x02N0C0 G A\x03\x0d\x0a"))
+    _, err = s.Write([]byte("\x0a"))
 
     if err != nil {
             fmt.Println(err)
     }
 
-    time.Sleep(time.Second/2)
+    //time.Sleep(time.Second/2)
 
     buf := make([]byte, 40)
     n, err := s.Read(buf)
@@ -29,7 +29,10 @@ func main() {
             fmt.Println(err)
     }
 
-    fmt.Println(string(buf[:n]))
+    fmt.Print(string(buf[:n]))
 
     s.Close()
+
+    main()
+
 }
